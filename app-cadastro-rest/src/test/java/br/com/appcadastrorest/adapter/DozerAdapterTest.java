@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import br.com.appcadastrorest.data.entity.Pessoa;
-import br.com.appcadastrorest.data.entity.vo.PessoaVO;
+import br.com.appcadastrorest.data.entity.vo.v1.PessoaVO;
 
 public class DozerAdapterTest {
 

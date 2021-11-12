@@ -1,16 +1,29 @@
-package br.com.appcadastrorest.data.entity.vo;
+package br.com.appcadastrorest.data.entity.vo.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"email","nomeSocial","sobrenome","nome","id"})
 public class PessoaVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@JsonProperty("PessoaId")
 	private Long id;
+	
+	@JsonProperty("FirstName")
 	private String nome;
+	
+	@JsonProperty("LastName")
 	private String sobrenome;
+	
+	@JsonProperty("SocialName")
 	private String nomeSocial;
+	
+	@JsonProperty("e-mail")
 	private String email;
 	
 	

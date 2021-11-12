@@ -13,51 +13,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.appcadastrorest.data.entity.vo.PessoaVO;
+import br.com.appcadastrorest.data.entity.vo.v1.PessoaVO;
 import br.com.appcadastrorest.service.PessoaService;
 
 @RestController
-	@RequestMapping("/pessoa/v1")
-	public class PessoaController {
-		
-		
-		@Autowired
-		PessoaService service;
-		
-		@GetMapping
-		public List<PessoaVO> exibirPessoa() {
-			return service.buscarTodos();
-			
-			
-		}
+@RequestMapping("/pessoa/v1")
+public class PessoaController {
 
-		@GetMapping("/{id}")
-		public PessoaVO exibirPessoaPorId(@PathVariable("id") Long idPessoa) {
-			return service.buscarPorId(idPessoa);
-			
-			
-		}
-		
-		@PostMapping()
-		public PessoaVO inserirPessoa(@RequestBody PessoaVO pessoa) {
-			return service.inserir(pessoa);
-			
-			
-			
-		}
-		
-		@PutMapping()
+	@Autowired
+	PessoaService service;
+
+	@GetMapping(produces = { "application/json", "application/xml" })
+	public List<PessoaVO> exibirPessoa() {
+		return service.buscarTodos();
+
+	}
+
+	@GetMapping(value = "/{id}", produces = { "application/json", "application/xml" })
+	public PessoaVO exibirPessoaPorId(@PathVariable("id") Long idPessoa) {
+		return service.buscarPorId(idPessoa);
+
+	}
+
+	@PostMapping(produces = { "application/json", "application/xml" }, consumes = { "application/json",
+			"application/xml" })
+	public PessoaVO inserirPessoa(@RequestBody PessoaVO pessoa) {
+		return service.inserir(pessoa);
+	}
+
+	@PutMapping(produces = { "application/json", "application/xml" }, consumes = { "application/json",
+			"application/xml" })
 	public PessoaVO atualizarPessoa(@RequestBody PessoaVO pessoa) {
-			
-			return service.atualizar(pessoa);
-		}
-		
-		@DeleteMapping("/{id}")
-		
-		public ResponseEntity<?> excluirPessoa(@PathVariable("id") Long idPessoa) {
-			service.deletar(idPessoa);
-			return ResponseEntity.ok().build();
-			
-		}
-		
+		return service.atualizar(pessoa);
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> excluirPessoa(@PathVariable("id") Long idPessoa) {
+		service.deletar(idPessoa);
+		return ResponseEntity.ok().build();
+	}
+
 }

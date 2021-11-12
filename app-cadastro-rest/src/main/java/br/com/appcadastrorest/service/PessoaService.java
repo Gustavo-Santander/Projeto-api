@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.appcadastrorest.adapter.DozerAdapter;
 import br.com.appcadastrorest.data.entity.Pessoa;
-import br.com.appcadastrorest.data.entity.vo.PessoaVO;
+import br.com.appcadastrorest.data.entity.vo.v1.PessoaVO;
 import br.com.appcadastrorest.exceptions.ResourceNotFoundException;
 import br.com.appcadastrorest.repository.PessoaRepository;
 
